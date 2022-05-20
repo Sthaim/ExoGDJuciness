@@ -16,6 +16,9 @@ public class EnemyController : MonoBehaviour
     Vector2 PreviousPlayerDirection;
     Rigidbody2D rb;
     BoxCollider2D col;
+
+    [SerializeField] private KillstreakManager m_killstreakManager;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,6 +44,8 @@ public class EnemyController : MonoBehaviour
         if(Health <= 0)
         {
             Destroy(gameObject);
+            m_killstreakManager.AddToJauge(m_killstreakManager.m_killstreakPowerOfEnnemies);
+            
         }
 
         if(Speed <= 0)
