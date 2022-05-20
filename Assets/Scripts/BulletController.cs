@@ -10,10 +10,14 @@ public class BulletController : MonoBehaviour
     // Private Variables
     Rigidbody2D rb;
 
+    private KillstreakManager m_killstreak;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
+        m_killstreak = FindObjectOfType<KillstreakManager>();    
+        
         //Rotate towards Mouse
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
         Vector2 myPos = transform.position;

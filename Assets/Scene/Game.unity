@@ -651,6 +651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4510329407025817292, guid: ddc57106ad03d6844b89c2b9c7f3c0aa, type: 3}
+      propertyPath: m_TagString
+      value: Manager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddc57106ad03d6844b89c2b9c7f3c0aa, type: 3}
 --- !u!4 &1971802961 stripped

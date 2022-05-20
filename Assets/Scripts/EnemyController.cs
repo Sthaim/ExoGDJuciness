@@ -17,13 +17,14 @@ public class EnemyController : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D col;
 
-    [SerializeField] private KillstreakManager m_killstreakManager;
+    KillstreakManager m_killstreakManager;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         Player = GameObject.FindWithTag("Player");
+        m_killstreakManager = FindObjectOfType<KillstreakManager>();
         DriftFactor = 1;
     }
 
@@ -45,7 +46,8 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
             m_killstreakManager.AddToJauge(m_killstreakManager.m_killstreakPowerOfEnnemies);
-            
+            m_killstreakManager.AddKill();
+
         }
 
         if(Speed <= 0)
@@ -58,6 +60,7 @@ public class EnemyController : MonoBehaviour
     public void GetDamage(float dmg)
     {
         Health -= dmg;
+        ScreenShakeController.m_instance.StartShake(0.2f,m_killstreakManager.m_currentKillstreak * 0.05f);
     }
 
     void RotateTowardsPlayer()
