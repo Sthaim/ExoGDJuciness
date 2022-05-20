@@ -147,3 +147,4 @@ MonoBehaviour:
   Health: 2
   MaxSpeed: 500
   AccelerationRate: 1
+  m_killstreakManager: {fileID: 8891880030231426976, guid: ddc57106ad03d6844b89c2b9c7f3c0aa, type: 3}

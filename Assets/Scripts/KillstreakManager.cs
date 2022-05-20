@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,6 +42,11 @@ public class KillstreakManager : MonoBehaviour
             else if (m_currentKillstreak > 0)
             {
                 m_currentKillstreak = 0;
+                yield return null;
+            }
+            else
+            {
+                yield return null;
             }
         }
     }
