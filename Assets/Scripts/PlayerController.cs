@@ -7,23 +7,27 @@ public class PlayerController : MonoBehaviour
 {
     // PLEASE READ THE GUIDE BEFORE USING THE SCRIPT //
 
+    [Space(10)]
     [Header("Movement")]
     public float Speed = 450;
     public bool RotateToDirection = true; // Rotate To The Movement Direction
     public bool RotateWithMouseClick = false; // Rotate To The Direction Of The Mouse When Click , Usefull For Attacking
 
+    [Space(10)]
     [Header("Jumping")]
     public float JumpPower = 22; // How High The Player Can Jump
     public float Gravity = 6; // How Fast The Player Will Pulled Down To The Ground, 6 Feels Smooth
     public int AirJumps = 1; // Max Amount Of Air Jumps, Set It To 0 If You Dont Want To Jump In The Air
     public LayerMask groundLayer; // The Layers That Represent The Ground, Any Layer That You Want The Player To Be Able To Jump In
 
+    [Space(10)]
     [Header("Dashing")]
     public float DashPower = 3; // It Is A Speed Multiplyer, A Value Of 2 - 3 Is Recommended.
     public float DashDuration = 0.20f; // Duration Of The Dash In Seconds, Recommended 0.20f.
     public float DashCooldown = 0.5f; // Duration To Be Able To Dash Again.
     public bool AirDash = true; // Can Dash In Air ?
 
+    [Space(10)]
     [Header("Attacking")]
     public GameObject BulletPrefab;
 
@@ -33,6 +37,9 @@ public class PlayerController : MonoBehaviour
 
     bool m_pastInTheGround = false;
 
+    [Space(10)]
+    [Header("Parametre ressort")]
+    
     public float position = 0.5f;
     public float velocity = 0;
     public float goalPosition = 0.5f;
@@ -70,8 +77,9 @@ public class PlayerController : MonoBehaviour
         {
             goalPosition = 0.3f;
             goalPosition2 =1f;
-            doneBound = true;
             StartCoroutine(timeReset());
+            doneBound = true;
+            
         }
         if (InTheGround() == false)
         {
@@ -269,6 +277,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = new Quaternion(0, 0, 0, 0);
         }
+        
     }
 
     // Reset Jump Counts When Collide With The Ground

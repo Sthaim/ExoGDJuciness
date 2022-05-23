@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class KillstreakManager : MonoBehaviour
 {
-    [SerializeField]
+    [NonSerialized]
     public int m_currentKillstreak;
 
     private int m_maxKillstreak = 5;
@@ -24,6 +24,7 @@ public class KillstreakManager : MonoBehaviour
     {
         m_currentKillstreak = 0;
         StartCoroutine(AutoDecrease());
+        ScreenShakeController.m_instance.power = m_currentKillstreak;
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class KillstreakManager : MonoBehaviour
     {
         
     }
-
+    
     IEnumerator AutoDecrease()
     {
         while (true)
