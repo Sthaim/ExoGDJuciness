@@ -1,3 +1,4 @@
+using FMPUtils.Extensions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,22 @@ public class PlayerController : MonoBehaviour
     bool canMove = true;
     bool canDash = true;
 
+    bool m_pastInTheGround = false;
+
+    public float position = 0.5f;
+    public float velocity = 0;
+    public float goalPosition = 0.5f;
+    public float goalPosition2 = 0.5f;
+    public float position2 = 0.5f;
+    public float velocity2 = 0;
+    public float angularFrequency = 0;
+    public float dampingRatio = 0;
+
+    bool doneBound = false;
+
+    [SerializeField]
+    GameObject m_test;
+
     float MoveDirection;
     int currentJumps = 0;
  
@@ -49,6 +66,45 @@ public class PlayerController : MonoBehaviour
     }   
     void Update()
     {
+        if (InTheGround() == true && m_pastInTheGround == true && doneBound == false)
+        {
+            goalPosition = 0.3f;
+            goalPosition2 =1f;
+            doneBound = true;
+            StartCoroutine(timeReset());
+        }
+        if (InTheGround() == false)
+        {
+            doneBound = false;
+            if (rb.velocity.y > 7 || rb.velocity.y < -7)
+            { 
+                goalPosition = 0.7f;
+                goalPosition2 = 0.2f;
+            }
+            else
+            {
+                goalPosition = 0.5f;
+                goalPosition2 = 0.5f;
+            }
+        }
+
+
+        m_pastInTheGround = InTheGround();
+        float deltaTime = Time.deltaTime;
+
+        SpringMotion.CalcDampedSimpleHarmonicMotion(
+            ref position,ref velocity,
+            goalPosition,deltaTime,
+            angularFrequency,dampingRatio
+            );
+
+        SpringMotion.CalcDampedSimpleHarmonicMotion(
+            ref position2, ref velocity2,
+            goalPosition2, deltaTime,
+            angularFrequency, dampingRatio
+            );
+
+        transform.localScale = new Vector3(position2, position, 1);
         // Get Player Movement Input
         MoveDirection = (Input.GetAxisRaw("Horizontal")); 
         // Rotation
@@ -60,6 +116,7 @@ public class PlayerController : MonoBehaviour
             RotateToMouse();
             Attack();
         }
+        
 
         // Jumping
         if (Input.GetKeyDown(KeyCode.Space))
@@ -84,6 +141,13 @@ public class PlayerController : MonoBehaviour
     {
         Move();
     } 
+
+    IEnumerator timeReset()
+    {
+        yield return new WaitForSeconds(0.2f);
+        goalPosition2 = 0.5f;
+        goalPosition = 0.5f;
+    }
 
     ///// MOVEMENT FUNCTIONS :
 

@@ -41,7 +41,6 @@ public class KillstreakManager : MonoBehaviour
             {
                 AddToJauge(-1f);
                 yield return new WaitForSeconds(m_frequencePerte);
-                Debug.Log(m_jaugeKillstreak);
             }
             else if (m_currentKillstreak > 0)
             {
@@ -59,7 +58,8 @@ public class KillstreakManager : MonoBehaviour
 
     public void AddToJauge(float p_value)
     {
-        m_jaugeKillstreak += p_value;
+        if (m_jaugeKillstreak <= 100)
+            m_jaugeKillstreak += p_value;
     }
 
     public void AddKill()
