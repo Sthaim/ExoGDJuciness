@@ -32,6 +32,7 @@ public class ScreenShakeController : MonoBehaviour
     {
         m_killstreak = FindObjectOfType<KillstreakManager>();
         m_instance = this;
+        m_instance.power = m_killstreak.m_currentKillstreak;
     }
 
     // Update is called once per frame

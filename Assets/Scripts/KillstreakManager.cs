@@ -24,7 +24,6 @@ public class KillstreakManager : MonoBehaviour
     {
         m_currentKillstreak = 0;
         StartCoroutine(AutoDecrease());
-        ScreenShakeController.m_instance.power = m_currentKillstreak;
     }
 
     // Update is called once per frame

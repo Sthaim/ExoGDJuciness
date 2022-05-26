@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{285bfce5-badd-4ac3-addb-9a1bf2e3c8b4}">
+		<property name="name">
+			<value>MusiqueTransition</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c6a80a11-bd3a-4a9a-9e03-fe12e517e68a}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a103979e-bdbd-4140-b33f-997612fcdacf}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a103979e-bdbd-4140-b33f-997612fcdacf}">
+		<property name="maximum">
+			<value>5</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

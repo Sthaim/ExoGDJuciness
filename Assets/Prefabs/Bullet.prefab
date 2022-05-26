@@ -115,6 +115,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 1
   Speed: 2000
+  m_hitEvent:
+    Guid:
+      Data1: -1133619636
+      Data2: 1324675209
+      Data3: -1631858756
+      Data4: -1712921868
+    Path: "event:/Tir/EnnemiTouch\xE9"
 --- !u!50 &-8815445834763433878
 Rigidbody2D:
   serializedVersion: 4

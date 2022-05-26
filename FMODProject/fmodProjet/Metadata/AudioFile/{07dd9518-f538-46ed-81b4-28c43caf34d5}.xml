@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{07dd9518-f538-46ed-81b4-28c43caf34d5}">
+		<property name="assetPath">
+			<value>zapsplat_cartoon_squirt_water_short_fast_47295.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.33600000000000002</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ad38e20-17ff-4fc6-8606-a277627c30e9}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -51,9 +51,22 @@ public class PlayerController : MonoBehaviour
 
     bool doneBound = false;
 
-    [SerializeField]
-    GameObject m_test;
+    private bool canRotate = true;
 
+    private int coroutineInstance = 0;
+    
+    [SerializeField]
+    FMODUnity.EventReference m_gunShotEvent;
+
+    [SerializeField]
+    FMODUnity.EventReference m_musicEvent;
+
+    private FMOD.Studio.EventInstance m_musicInstance;
+    
+    private KillstreakManager m_killstreakManager;
+
+    [SerializeField] private ParticleSystem m_particleSystem;
+    
     float MoveDirection;
     int currentJumps = 0;
  
@@ -65,6 +78,13 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        m_killstreakManager = FindObjectOfType<KillstreakManager>();
+        
+        m_musicInstance = FMODUnity.RuntimeManager.CreateInstance(m_musicEvent);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_musicInstance, GetComponent<Transform>(), GetComponent<Rigidbody>());
+        m_musicInstance.start();
+        
+        
         canMove = true;
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
@@ -73,6 +93,8 @@ public class PlayerController : MonoBehaviour
     }   
     void Update()
     {
+        m_musicInstance.setParameterByName("MusiqueTransition", m_killstreakManager.m_currentKillstreak);
+        
         if (InTheGround() == true && m_pastInTheGround == true && doneBound == false)
         {
             goalPosition = 0.3f;
@@ -213,6 +235,20 @@ public class PlayerController : MonoBehaviour
     void Attack()
     {
         Instantiate(BulletPrefab, transform.position, transform.rotation);
+        var m_gunShotInstance = FMODUnity.RuntimeManager.CreateInstance(m_gunShotEvent);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_gunShotInstance, GetComponent<Transform>(), GetComponent<Rigidbody>());
+        m_gunShotInstance.setParameterByName("Parameter 1", m_killstreakManager.m_currentKillstreak);
+        m_gunShotInstance.start();
+        
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+        Vector2 myPos = transform.position;
+        Vector2 dir = mousePos - myPos;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Vector2 angledForce = new Vector2(-Mathf.Cos(Mathf.Deg2Rad*angle)*100,-Mathf.Sin(Mathf.Deg2Rad*angle)*100);
+        rb.AddRelativeForce(new Vector2(angledForce.x*m_killstreakManager.m_currentKillstreak,angledForce.y*m_killstreakManager.m_currentKillstreak));
+        
+        m_particleSystem.transform.LookAt(new Vector3(-angledForce.x,-angledForce.y,0));
+        m_particleSystem.Play();
     }
 
     void RotateToMoveDirection()
@@ -220,7 +256,7 @@ public class PlayerController : MonoBehaviour
         if (!RotateToDirection)
             return;
 
-        if (MoveDirection != 0 && canMove)
+        if (MoveDirection != 0 && canMove && canRotate)
         {
             if (MoveDirection > 0)
             {
@@ -277,9 +313,22 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = new Quaternion(0, 0, 0, 0);
         }
-        
+
+        StartCoroutine(RotateCooldown());
     }
 
+    private IEnumerator RotateCooldown()
+    {
+        coroutineInstance++;
+        canRotate = false;
+        yield return new WaitForSeconds(0.5f);
+        if (coroutineInstance < 2)
+        {
+            canRotate = true;
+        }
+        coroutineInstance--;
+    }
+    
     // Reset Jump Counts When Collide With The Ground
     void OnCollisionEnter2D(Collision2D collision)
     {

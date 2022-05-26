@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b3c9ab57-99dd-4a71-b44e-b1aa5dc11da6}">
+		<property name="assetPath">
+			<value>johnj_wafare_gun_pistol_silenced_walther_pp7.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.47020408163265304</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ad38e20-17ff-4fc6-8606-a277627c30e9}</destination>
+		</relationship>
+	</object>
+</objects>
