@@ -66,18 +66,25 @@ public class PlayerController : MonoBehaviour
     private KillstreakManager m_killstreakManager;
 
     [SerializeField] private ParticleSystem m_particleSystem;
-    
+
+    [SerializeField]
+    private Sprite[] m_shapeSprites;
+        
     float MoveDirection;
     int currentJumps = 0;
  
     Rigidbody2D rb;
     BoxCollider2D col; // Change It If You Use Something Else That Box Collider, Make Sure You Update The Reference In Start Function
 
-
+    private CursorController m_cusorController;
+    
     ////// START & UPDATE :
 
     void Start()
     {
+        
+        Debug.Log(m_shapeSprites.Length);
+        
         m_killstreakManager = FindObjectOfType<KillstreakManager>();
         
         m_musicInstance = FMODUnity.RuntimeManager.CreateInstance(m_musicEvent);
@@ -89,7 +96,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         rb.gravityScale = Gravity;
-
+        
+        m_cusorController = FindObjectOfType<CursorController>();
     }   
     void Update()
     {
@@ -235,6 +243,9 @@ public class PlayerController : MonoBehaviour
     void Attack()
     {
         Instantiate(BulletPrefab, transform.position, transform.rotation);
+        
+        m_cusorController.AttackVelocity();
+        
         var m_gunShotInstance = FMODUnity.RuntimeManager.CreateInstance(m_gunShotEvent);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_gunShotInstance, GetComponent<Transform>(), GetComponent<Rigidbody>());
         m_gunShotInstance.setParameterByName("Parameter 1", m_killstreakManager.m_currentKillstreak);
@@ -327,6 +338,11 @@ public class PlayerController : MonoBehaviour
             canRotate = true;
         }
         coroutineInstance--;
+    }
+
+    public void ChangeShapePlayer(int index)
+    {
+        GetComponent<SpriteRenderer>().sprite = m_shapeSprites[index];
     }
     
     // Reset Jump Counts When Collide With The Ground
