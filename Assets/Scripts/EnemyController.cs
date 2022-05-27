@@ -114,7 +114,7 @@ public class EnemyController : MonoBehaviour
         if(Health <= 0)
         {
             Destroy(gameObject);
-            m_killstreakManager.AddToJauge(m_killstreakManager.m_killstreakPowerOfEnnemies);
+            m_killstreakManager.AddToJauge(100);
             m_killstreakManager.AddKill();
 
         }
