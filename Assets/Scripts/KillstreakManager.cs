@@ -47,7 +47,6 @@ public class KillstreakManager : MonoBehaviour
     {
         while (true)
         {
-            
             if (m_jaugeKillstreak > 0)
             {
                 AddToJauge(-1f);

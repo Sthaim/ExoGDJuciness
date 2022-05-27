@@ -86,9 +86,11 @@ public class KillCounterController : MonoBehaviour
 
     public void NewKill()
     {
-        if(m_killstreakManager.m_numberOfKill > 0)
-            velocity = 50+50*m_killstreakManager.m_currentKillstreak;
-        GetComponent<TextMeshProUGUI>().text = m_killstreakManager.m_numberOfKill.ToString();
-        
+        if (m_killstreakManager)
+        {
+            if(m_killstreakManager.m_numberOfKill > 0)
+                velocity = 50+50*m_killstreakManager.m_currentKillstreak;
+            GetComponent<TextMeshProUGUI>().text = m_killstreakManager.m_numberOfKill.ToString();
+        }
     }
 }
