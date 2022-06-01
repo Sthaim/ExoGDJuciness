@@ -35,11 +35,17 @@ public class EnemyController : MonoBehaviour
     public float dampingRatio = 0;
     private bool doneBound = false;
     private bool m_pastInTheGround = false;
+
+    private float m_step = 0.03f;
+    private float m_redValue;
+    private SpriteRenderer m_sR;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
+        m_sR = GetComponent<SpriteRenderer>();
+        m_redValue = m_sR.color.r;
         Player = GameObject.FindWithTag("Player");
         m_killstreakManager = FindObjectOfType<KillstreakManager>();
         DriftFactor = 1;
@@ -123,6 +129,7 @@ public class EnemyController : MonoBehaviour
         {
             StartCoroutine(GetToSpeed(MaxSpeed));
         }
+        
         //Debug.Log(Speed);
     }
     
@@ -190,5 +197,22 @@ public class EnemyController : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void StartHitFX()
+    {
+        m_sR.color = new Color(1,m_sR.color.g,m_sR.color.b);
+        Debug.Log("Lancement de la coroutine de flash rouge");
+        StartCoroutine(HitFX());
+    }
+    
+    private IEnumerator HitFX()
+    {
+        yield return null;
+        Debug.Log(m_sR.color.r);
+        m_sR.color = new Color(m_sR.color.r - (m_step % 255),m_sR.color.g,m_sR.color.b);
+        
+        if (m_sR.color.r > m_redValue) 
+            StartCoroutine(HitFX());
     }
 } 

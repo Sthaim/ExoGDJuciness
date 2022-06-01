@@ -36,7 +36,7 @@ public class BulletController : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, -transform.forward);
         }
 
-        rb.velocity = transform.right * Speed * Time.fixedDeltaTime;
+        rb.velocity = transform.right * Speed * Time.fixedDeltaTime * (1+(m_killstreakManager.m_currentKillstreak*0.2f));
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -48,7 +48,9 @@ public class BulletController : MonoBehaviour
         else if (collision.CompareTag("Enemy"))
         {
             FMODUnity.RuntimeManager.PlayOneShot(m_hitEvent);
-            collision.gameObject.GetComponent<EnemyController>().GetDamage(Damage);
+            EnemyController ec = collision.gameObject.GetComponent<EnemyController>();
+            ec.GetDamage(Damage);
+            ec.StartHitFX();
             Destroy(gameObject);
         }
     }
