@@ -40,6 +40,9 @@ public class EnemyController : MonoBehaviour
     private float m_redValue;
     private SpriteRenderer m_sR;
     
+    [SerializeField]
+    FMODUnity.EventReference m_fmodEvent;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -120,8 +123,10 @@ public class EnemyController : MonoBehaviour
         if(Health <= 0)
         {
             Destroy(gameObject);
+            
             m_killstreakManager.AddToJauge(100);
             m_killstreakManager.AddKill();
+            FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEvent,gameObject);
 
         }
 

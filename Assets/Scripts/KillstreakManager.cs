@@ -36,12 +36,7 @@ public class KillstreakManager : MonoBehaviour
         StartCoroutine(AutoDecrease());
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     
     IEnumerator AutoDecrease()
     {

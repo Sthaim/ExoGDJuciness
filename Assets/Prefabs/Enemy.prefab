@@ -158,3 +158,10 @@ MonoBehaviour:
   velocity2: 0
   angularFrequency: 20
   dampingRatio: 0.5
+  m_fmodEvent:
+    Guid:
+      Data1: 723115851
+      Data2: 1099254000
+      Data3: 1580322971
+      Data4: 988054133
+    Path: "event:/Tir/EnnemiTu\xE9"

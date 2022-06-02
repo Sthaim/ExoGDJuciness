@@ -18,7 +18,7 @@ public class CursorController : MonoBehaviour
     void Start()
     {
         m_killstreakManager = FindObjectOfType<KillstreakManager>();
-
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
