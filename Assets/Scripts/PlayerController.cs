@@ -82,9 +82,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
-        Debug.Log(m_shapeSprites.Length);
-        
         m_killstreakManager = FindObjectOfType<KillstreakManager>();
         
         m_musicInstance = FMODUnity.RuntimeManager.CreateInstance(m_musicEvent);

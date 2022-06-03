@@ -214,7 +214,6 @@ public class EnemyController : MonoBehaviour
     private IEnumerator HitFX()
     {
         yield return null;
-        Debug.Log(m_sR.color.r);
         m_sR.color = new Color(m_sR.color.r - (m_step % 255),m_sR.color.g,m_sR.color.b);
         
         if (m_sR.color.r > m_redValue) 

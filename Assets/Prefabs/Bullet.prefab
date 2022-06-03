@@ -122,6 +122,13 @@ MonoBehaviour:
       Data3: -1631858756
       Data4: -1712921868
     Path: "event:/Tir/EnnemiTouch\xE9"
+  m_bulletSprites:
+  - {fileID: -8275652579072658199, guid: e30c0bf261ca4f744972b320f9a0af37, type: 3}
+  - {fileID: -7756682840167133929, guid: e30c0bf261ca4f744972b320f9a0af37, type: 3}
+  - {fileID: 2469159788208477745, guid: e30c0bf261ca4f744972b320f9a0af37, type: 3}
+  - {fileID: -2620047824674407095, guid: e30c0bf261ca4f744972b320f9a0af37, type: 3}
+  - {fileID: 715514392790408444, guid: e30c0bf261ca4f744972b320f9a0af37, type: 3}
+  - {fileID: -4554916770053963473, guid: e30c0bf261ca4f744972b320f9a0af37, type: 3}
 --- !u!50 &-8815445834763433878
 Rigidbody2D:
   serializedVersion: 4
