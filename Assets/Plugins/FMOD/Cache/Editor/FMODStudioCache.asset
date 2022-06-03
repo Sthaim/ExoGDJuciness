@@ -28,6 +28,58 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6008389576443746662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Killstreak/Parameter 2
+  m_EditorClassIdentifier: 
+  Name: Parameter 2
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 3998957031
+    data2: 670870988
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-4273456722510075921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Killstreak
+  m_EditorClassIdentifier: 
+  Path: event:/Killstreak
+  Guid:
+    Data1: -1081033110
+    Data2: 1102908197
+    Data3: 1917756066
+    Data4: 343858144
+  Banks:
+  - {fileID: -1423005656913960507}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -6008389576443746662}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2552257830134304742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +149,7 @@ MonoBehaviour:
   Path: FMODProject/fmodProjet/Build/Desktop/Master.bank
   Name: fmodProjet/Build/Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 637897833686270411
+  lastModified: 637898685055622123
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -120,12 +172,13 @@ MonoBehaviour:
   - {fileID: 5812451462942782099}
   - {fileID: -1556506659400961886}
   - {fileID: -2552257830134304742}
+  - {fileID: -4273456722510075921}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1423005656913960507}
   StringsBanks:
   - {fileID: 1953807686477116300}
-  cacheTime: 637897833686310307
+  cacheTime: 637898685055662016
   cacheVersion: 131591
 --- !u!114 &1953807686477116300
 MonoBehaviour:
@@ -142,10 +195,10 @@ MonoBehaviour:
   Path: FMODProject/fmodProjet/Build/Desktop/Master.strings.bank
   Name: fmodProjet/Build/Desktop/Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637897833686310307
+  lastModified: 637898685055662016
   FileSizes:
   - Name: 
-    Value: 1030
+    Value: 1114
   Exists: 1
 --- !u!114 &2447959940982939607
 MonoBehaviour:

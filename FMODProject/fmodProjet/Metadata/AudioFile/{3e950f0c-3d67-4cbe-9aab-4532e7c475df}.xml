@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{3e950f0c-3d67-4cbe-9aab-4532e7c475df}">
+		<property name="assetPath">
+			<value>GreatClean.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.88800000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ad38e20-17ff-4fc6-8606-a277627c30e9}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1154a69c-5aec-4cf1-86a0-96b4dcad9dbe}">
+		<property name="assetPath">
+			<value>CoolClean.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.86399999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ad38e20-17ff-4fc6-8606-a277627c30e9}</destination>
+		</relationship>
+	</object>
+</objects>

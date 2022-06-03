@@ -81,6 +81,7 @@ public class KillCounterController : MonoBehaviour
             velocity3 = velociti2;
 
             yield return new WaitForSeconds(0.5f/(m_killstreakManager.m_currentKillstreak+1));
+            //
         }
     }
 
